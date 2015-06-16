@@ -12,13 +12,17 @@ var stats: Stats;
 
 var assets: createjs.LoadQueue;
 var manifest = [
-    { id: "pinkButton", src: "assets/images/pinkButton.png" },
-    { id: "clicked", src: "assets/audio/clicked.wav" }
+    { id: "pinkbutton", src: "assets/images/roll.png" },
+    { id: "clicked", src: "assets/audio/clicked.wav" },
+    { id: "dice1", src: "assets/images/no1.png" },
+    { id: "dice2", src: "assets/images/no2.png" }
 ];
 
 
 // Game Variables
 var helloLabel: createjs.Text; // create a reference
+var dice1: createjs.Bitmap;
+var dice2: createjs.Bitmap;
 var pinkButton: createjs.Bitmap;
 
 
@@ -88,7 +92,7 @@ function pinkButtonOut() {
 // Our Main Game Function
 function main() {
     console.log("Game is Running");
-    helloLabel = new createjs.Text("Hello World!", "40px Consolas", "#000000");
+    helloLabel = new createjs.Text("ROLL THE DICES!!", "40px Consolas", "#000000");
     helloLabel.regX = helloLabel.getMeasuredWidth() * 0.5;
     helloLabel.regY = helloLabel.getMeasuredHeight() * 0.5;
     helloLabel.x = 160;
@@ -99,8 +103,19 @@ function main() {
     pinkButton.regX = pinkButton.getBounds().width * 0.5;
     pinkButton.regY = pinkButton.getBounds().height * 0.5;
     pinkButton.x = 160;
-    pinkButton.y = 270;
+    pinkButton.y = 290;
+    //declaring properties for dice1
+    dice1 = new createjs.Bitmap(assets.getResult("dice1"));
+    dice1.x = 110;
+    dice1.y = 190;
+    //declaring properties for dice1
+    dice2 = new createjs.Bitmap(assets.getResult("dice1"));
+    dice2.x = 110;
+    dice2.y = 190;
+
     stage.addChild(pinkButton);
+    stage.addChild(dice1);
+    stage.addChild(dice2);
     pinkButton.on("click", pinkButtonClicked);
     pinkButton.on("mouseover", pinkButtonOver);
     pinkButton.on("mouseout", pinkButtonOut);
