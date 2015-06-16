@@ -23,7 +23,7 @@ var manifest = [
 var helloLabel: createjs.Text; // create a reference
 var dice1: createjs.Bitmap;
 var dice2: createjs.Bitmap;
-var pinkButton: createjs.Bitmap;
+var rollButton: createjs.Bitmap;
 
 
 // Preloader Function
@@ -73,7 +73,7 @@ function gameLoop() {
 }
 
 // Callback function that allows me to respond to button click events for roll button
-function pinkButtonClicked(event: createjs.MouseEvent) {
+function rollButtonClicked(event: createjs.MouseEvent) {
     createjs.Sound.play("clicked");
     var randomNumDice1 = Math.floor(Math.random() * 6) + 1;
     var randomNumDice2 = Math.floor(Math.random() * 6) + 1;
@@ -90,43 +90,43 @@ function pinkButtonClicked(event: createjs.MouseEvent) {
 // Callback functions that change the alpha transparency of the button
 
 // Mouseover event
-function pinkButtonOver() {
-    pinkButton.alpha = 0.8;
+function rollButtonOver() {
+    rollButton.alpha = 0.8;
 }
 
 // Mouseout event
-function pinkButtonOut() {
-    pinkButton.alpha = 1.0;
+function rollButtonOut() {
+    rollButton.alpha = 1.0;
 }
 
 // Our Main Game Function
 function main() {
     console.log("Game is Running");
-    helloLabel = new createjs.Text("ROLL THE DICES!!", "40px Consolas", "#000000");
+    helloLabel = new createjs.Text("DICE ROLL!!", "40px Consolas", "#000000");
     helloLabel.regX = helloLabel.getMeasuredWidth() * 0.5;
     helloLabel.regY = helloLabel.getMeasuredHeight() * 0.5;
     helloLabel.x = 160;
     helloLabel.y =190;
     stage.addChild(helloLabel);
 
-    pinkButton = new createjs.Bitmap(assets.getResult("pinkButton"));
-    pinkButton.regX = pinkButton.getBounds().width * 0.5;
-    pinkButton.regY = pinkButton.getBounds().height * 0.5;
-    pinkButton.x = 160;
-    pinkButton.y = 250;
+    rollButton = new createjs.Bitmap(assets.getResult("rollButton"));
+    rollButton.regX = rollButton.getBounds().width * 0.5;
+    rollButton.regY = rollButton.getBounds().height * 0.5;
+    rollButton.x = 160;
+    rollButton.y = 250;
     //declaring properties for dice1
     dice1 = new createjs.Bitmap(assets.getResult("dice1"));
     dice1.x = 110;
     dice1.y = 190;
-    //declaring properties for dice1
-    dice2 = new createjs.Bitmap(assets.getResult("dice1"));
+    //declaring properties for dice2
+    dice2 = new createjs.Bitmap(assets.getResult("dice2"));
     dice2.x = 110;
     dice2.y = 190;
 
-    stage.addChild(pinkButton);
+    stage.addChild(rollButton);
     stage.addChild(dice1);
     stage.addChild(dice2);
-    pinkButton.on("click", pinkButtonClicked);
-    pinkButton.on("mouseover", pinkButtonOver);
-    pinkButton.on("mouseout", pinkButtonOut);
+    rollButton.on("click", rollButtonClicked);
+    rollButton.on("mouseover", rollButtonOver);
+    rollButton.on("mouseout", rollButtonOut);
 }
