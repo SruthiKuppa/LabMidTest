@@ -12,7 +12,7 @@ var stats: Stats;
 
 var assets: createjs.LoadQueue;
 var manifest = [
-    { id: "pinkbutton", src: "assets/images/roll.png" },
+    { id: "rollbutton", src: "assets/images/roll.png" },
     { id: "clicked", src: "assets/audio/clicked.wav" },
     { id: "dice1", src: "assets/images/no1.png" },
     { id: "dice2", src: "assets/images/no2.png" }
@@ -72,9 +72,19 @@ function gameLoop() {
     stats.end(); // end measuring
 }
 
-// Callback function that allows me to respond to button click events
+// Callback function that allows me to respond to button click events for roll button
 function pinkButtonClicked(event: createjs.MouseEvent) {
     createjs.Sound.play("clicked");
+    var randomNumDice1 = Math.floor(Math.random() * 6) + 1;
+    var randomNumDice2 = Math.floor(Math.random() * 6) + 1;
+
+    if (randomNumDice1.toString != null) {
+        console.log("dice 1 value:"+randomNumDice1);
+    }
+    if (randomNumDice2.toString != null) {
+        console.log("dice 2 value:" + randomNumDice2);
+    }
+
 }
 
 // Callback functions that change the alpha transparency of the button
@@ -96,14 +106,14 @@ function main() {
     helloLabel.regX = helloLabel.getMeasuredWidth() * 0.5;
     helloLabel.regY = helloLabel.getMeasuredHeight() * 0.5;
     helloLabel.x = 160;
-    helloLabel.y = 190;
+    helloLabel.y =190;
     stage.addChild(helloLabel);
 
     pinkButton = new createjs.Bitmap(assets.getResult("pinkButton"));
     pinkButton.regX = pinkButton.getBounds().width * 0.5;
     pinkButton.regY = pinkButton.getBounds().height * 0.5;
     pinkButton.x = 160;
-    pinkButton.y = 290;
+    pinkButton.y = 250;
     //declaring properties for dice1
     dice1 = new createjs.Bitmap(assets.getResult("dice1"));
     dice1.x = 110;
