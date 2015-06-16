@@ -56,8 +56,8 @@ function setupStats() {
 
     // align bottom-right
     stats.domElement.style.position = 'absolute';
-    stats.domElement.style.left = '330px';
-    stats.domElement.style.top = '10px';
+    stats.domElement.style.left = '540px';
+    stats.domElement.style.top = '12px';
 
     document.body.appendChild(stats.domElement);
 }
