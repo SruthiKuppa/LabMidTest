@@ -75,6 +75,7 @@ function gameLoop() {
 // Callback function that allows me to respond to button click events for roll button
 function rollButtonClicked(event: createjs.MouseEvent) {
     createjs.Sound.play("clicked");
+    //declaring the random number variables
     var randomNumDice1 = Math.floor(Math.random() * 6) + 1;
     var randomNumDice2 = Math.floor(Math.random() * 6) + 1;
 
@@ -84,6 +85,27 @@ function rollButtonClicked(event: createjs.MouseEvent) {
     if (randomNumDice2.toString != null) {
         console.log("dice 2 value:" + randomNumDice2);
     }
+    var imgRange = [
+        { num1:"no1.png" },
+        { num2: "no2.png" },
+        { num3: "no3.png"},
+        { num4: "no4.png" },
+        { num5: "no5.png" },
+        { num6: "no6.png" }
+    ];
+
+    var randomNumDice1 = Math.floor(Math.random() * 6) + 1;
+    var image = "default";
+
+    for (var i = 0; i < imgRange.length; ++i) {
+        if (randomNumDice1 >= imgRange[i].from) {
+            image = imgRange[i].getImage;
+            break;
+        }
+    }
+    document.write("Number: " + randomNumDice1 + " parts, " + " Imagetitle: = " + image);
+    document.write('<img src="' + imgRange[image] + '">');
+
 
 }
 
